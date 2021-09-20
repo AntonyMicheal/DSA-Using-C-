@@ -5,15 +5,16 @@ int main(){
     cin>>a>>b>>c;
 
     if(a>b){
-        if(a<c){
+        if(a>c){
             cout<<a<<" A is largest";
         }
         else{
             cout<<c<<" C is largest";
         }
     }
-    else if(b>c){
-        cout<<b<<" B is largest";
+    else if(b>a){
+        if(b>c) cout<<b<<" B is largest";
+        else cout<<c<<" c largest";
     }
     else{
         cout<<c<<" C is largest";
