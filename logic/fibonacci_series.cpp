@@ -8,7 +8,6 @@ int main(){
     cin>>n;
     int sum = 0;
     for(int i=0;i<n;i++){
-
         cout<<a<<" ";
         c = a+b;
         a = b;
