@@ -1,26 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 int main(){
     int n;
-    cout<<"Enter size of array: ";
     cin>>n;
-    int array[n];
-    cout<<"Enter array elements: ";
+    int array[n+1];
     for(int i=0;i<n;i++){
         cin>>array[i];
     }
-    int index,element;
-    cout<<"Enter index:";
-    cin>>index;
-    cout<<"Enter new element: ";
-    cin>>element;
 
-    for(int j=n;j>=index;j--){
-        array[j+1] = array[j];
+    int index,element;
+    cin>>index>>element;
+    for(int i = n;i>=index;i--){
+        array[i+1] = array[i]; 
     }
     array[index] = element;
-    for(int i=0;i<n+1;i++){
+
+    for(int i = 0;i<n+1;i++){
         cout<<array[i]<<" ";
     }
     return 0;
