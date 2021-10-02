@@ -16,7 +16,15 @@ Worst case = 100 comparisons
 
 as we can see as the input grows number of comparison grows ie- time of comparison also grows
 
-In best case the number of comparisons is 9 is because it only checks till 9th
+In best case the number of comparisons is 9 is because it only checks  9times
+1-2, 2-3, 3-4, 4-5, 5-6, 6-7, 7-8, 8-9, 9-10
+
+so in this case we can say its O(n-1) but in time complexity constants are neglected so
+time complexity = O(n)
+
+
+
+
 */
 
 #include<bits/stdc++.h>
