@@ -29,6 +29,46 @@ time complexity = O(n)
 
 #include<bits/stdc++.h>
 using namespace std;
+// int main(){
+//     int n;
+//     cin>>n;
+//     int array[n];
+//     for(int i=0;i<n;i++){
+//         cin>>array[i];
+//     }
+
+//     for(int i=0;i<n;i++){
+//         for(int j=0;j<n-i-1;j++){  //this loop decides till where should each iteration swap.
+//             if(array[j]>array[j+1]){
+//                 int temp = array[j];
+//                 array[j] = array[j+1];
+//                 array[j+1] = temp;
+//             }
+//         }
+//     }
+
+//     for(int i=0;i<n;i++){
+//         cout<<array[i]<<" ";
+//     }
+//     return 0;
+// }
+
+void swap(int *arr, int n, int m){
+    int temp = arr[n];
+    arr[n] = arr[m];
+    arr[m] = temp;
+}
+
+void bubble_sort(int arr[], int n){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr,j,j+1);
+            }
+        }
+    }
+}
+
 int main(){
     int n;
     cin>>n;
@@ -36,16 +76,7 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>array[i];
     }
-
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n-i-1;j++){  //this loop decides till where should each iteration swap.
-            if(array[j]>array[j+1]){
-                int temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
-            }
-        }
-    }
+    bubble_sort(array,n);
 
     for(int i=0;i<n;i++){
         cout<<array[i]<<" ";

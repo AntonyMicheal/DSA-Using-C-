@@ -38,7 +38,16 @@ PS C:\Users\admin\fun_dsa\arrays> ./sort_selection
 
 Bset and Worst case time complexities are same
 
-best case = O(n^2) -> searching for maximum value makes it run n^2 times
+best case = O(n^2) -> even when the array is sorted it still checks whether the order is
+correct or not.
+1 2 3 4 5
+1<2 1<3 1<4 ,1<5 = 1 is sorted
+2<3 2<4 2<5      = 1 2 is sorted
+3<4 3<5          = 1 2 3 is sorted
+4<5              = 1 2 3 4 is sorted
+5                = 1 2 3 4 5
+n-1+n-2+n-3_n-4 => n(n+1)/2 => n-1(n-1 + 1)/2 => (do the math) =>O(n^2)
+
 worst case = O(n^2)
 
 
@@ -49,21 +58,30 @@ worst case = O(n^2)
 #include<bits/stdc++.h>
 using namespace std;
 
-void swap(int *array, int x, int last){
-    int temp = array[x];
-    array[x] = array[last];
-    array[last] = temp;
+void swap(int *arr, int n, int m){
+    int temp = arr[n];
+    arr[n] = arr[m];
+    arr[m] = temp;
 }
 
-int get_max_index(int array[],int n){
-    int start = 0;
+int max_index(int *arr, int n){
+    int max = 0;
     for(int i=0;i<n;i++){
-        if(array[start]<array[i]){
-            start = i;
+        if(arr[i]>arr[max]){
+            max = i;
         }
-
     }
-    return start;
+    return max;
+}
+
+void selection_sort(int array[], int n){
+    for(int i=0;i<n;i++){
+        int last = n-i-1;
+        int max = max_index(array,last);
+        if(array[last]<array[max]){
+            swap(array,last,max);
+        }
+    }
 }
 
 int main(){
@@ -73,13 +91,7 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>array[i];
     }
-    for(int i=0;i<n;i++){
-        int last = n-i-1;
-        int x = get_max_index(array,last);
-        if(array[x]>array[last]){
-            swap(array,x,last);
-        }
-    }
+    selection_sort(array,n);
 
     for(int i=0;i<n;i++){
         cout<<array[i]<<" ";
@@ -88,6 +100,11 @@ int main(){
 }
 
 
+
+
+
+// #include<iostream>
+// using namespace std;
 // int main(){
 //     int n;
 //     cin>>n;
@@ -96,14 +113,13 @@ int main(){
 //         cin>>array[i];
 //     }
 
-//     for(int i=n-1;i>=0;i--){
-//         for(int j = i-1;j>=0;j--){
-//             if(array[i]<array[j]){
+//     for(int i=0;i<n;i++){
+//         for(int j = i+1;j<n;j++){
+//             if(array[i]>array[j]){
 //                 int temp = array[i];
 //                 array[i] = array[j];
 //                 array[j] = temp;
 //             }
-
 //         }
 //     }
 //     for(int i=0;i<n;i++){
@@ -111,4 +127,3 @@ int main(){
 //     }
 //     return 0;
 // }
-
