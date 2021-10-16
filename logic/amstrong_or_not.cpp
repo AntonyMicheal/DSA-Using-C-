@@ -3,14 +3,17 @@ using namespace std;
 int main(){
     int n;
     cin>>n;
-    int duplicate = n;
-    int amstrong = 0;
-    while(n>0){
-        int rem = n%10;
-        amstrong +=(rem*rem*rem);
-        n=n/10;
+    int d = n;
+    int amstrong=0;
+    for(int i=n;i>0;i/=10){
+        int rem = i%10;
+        amstrong += (rem*rem*rem);
     }
-    if(duplicate==amstrong) cout<<"Amstrong";
-    else cout<<"Not Amstrong";
+    if(amstrong==d){
+        cout<<"is an amstrong";
+    }
+    else{
+        cout<<"is not an amstrong";
+    }
     return 0;
 }

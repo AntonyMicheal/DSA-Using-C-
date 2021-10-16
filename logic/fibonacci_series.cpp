@@ -1,18 +1,14 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int a = 0;
-    int b = 1;
-    int c = 0;
     int n;
     cin>>n;
-    int sum = 0;
-    for(int i=0;i<n;i++){
+    int a=0,b=1,c=0;
+    while(c<=n){
         cout<<a<<" ";
         c = a+b;
         a = b;
-        b = c;
-        
+        b=c;
     }
     return 0;
 }
